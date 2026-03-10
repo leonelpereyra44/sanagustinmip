@@ -47,3 +47,8 @@ stichcodigo/
 # Backups
 *.bak
 *.backup
+
+# Documentation / Ideas (local only)
+IDEAS.md
+TODO.md
+NOTAS.md

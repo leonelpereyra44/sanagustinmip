@@ -459,10 +459,10 @@
                         Control de plagas profesional con Manejo Integrado de Plagas. Protegemos tu hogar y negocio con soluciones efectivas y seguras.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+                        <button id="shareBtn" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors" title="Compartir">
                             <span class="material-symbols-outlined text-sm">share</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+                        </button>
+                        <a href="https://wa.me/5492364419280?text=Hola%2C%20me%20interesa%20consultar%20por%20sus%20servicios%20de%20control%20de%20plagas" target="_blank" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors" title="WhatsApp">
                             <span class="material-symbols-outlined text-sm">chat</span>
                         </a>
                     </div>
@@ -618,6 +618,45 @@
             "availableLanguage": "Spanish"
         }
     }
+    </script>
+
+    <!-- Share Button Script -->
+    <script>
+        const shareBtn = document.getElementById('shareBtn');
+        shareBtn.addEventListener('click', async () => {
+            const shareData = {
+                title: 'San Agustín MIP - Control de Plagas',
+                text: 'Control de plagas profesional en Chacabuco y zona. ¡Consultá sin compromiso!',
+                url: 'https://sanagustinmip.com.ar'
+            };
+            
+            // Si el navegador soporta Web Share API (principalmente móviles)
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Compartir cancelado');
+                }
+            } else {
+                // Fallback para desktop: copiar link
+                try {
+                    await navigator.clipboard.writeText(shareData.url);
+                    
+                    // Mostrar feedback
+                    const originalContent = shareBtn.innerHTML;
+                    shareBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+                    shareBtn.classList.add('bg-green-600');
+                    
+                    setTimeout(() => {
+                        shareBtn.innerHTML = originalContent;
+                        shareBtn.classList.remove('bg-green-600');
+                    }, 2000);
+                } catch (err) {
+                    // Si falla el clipboard, abrir ventana de compartir manual
+                    window.open(`https://wa.me/?text=${encodeURIComponent(shareData.text + ' ' + shareData.url)}`, '_blank');
+                }
+            }
+        });
     </script>
 </body>
 </html>
