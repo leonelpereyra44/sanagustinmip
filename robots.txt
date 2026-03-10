@@ -1,11 +1,11 @@
 # Robots.txt for San Agustín MIP
-# https://sanagustinmip.com
+# https://sanagustinmip.com.ar
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://sanagustinmip.com/sitemap.xml
+Sitemap: https://sanagustinmip.com.ar/sitemap.xml
 
 # Disallow admin or private directories (if any in the future)
 Disallow: /admin/
