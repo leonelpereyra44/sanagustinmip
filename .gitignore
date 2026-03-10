@@ -39,5 +39,11 @@ tmp/
 temp/
 *.tmp
 
-# Project specific
+# Project specific - Templates y archivos de desarrollo
 assets/stichcodigo/
+stichcodigo/
+*.pdf
+
+# Backups
+*.bak
+*.backup
