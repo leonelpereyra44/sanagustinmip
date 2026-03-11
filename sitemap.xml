@@ -31,4 +31,12 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    
+    <!-- Página de Preguntas Frecuentes -->
+    <url>
+        <loc>https://sanagustinmip.com.ar/pages/faq.html</loc>
+        <lastmod>2026-03-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>
