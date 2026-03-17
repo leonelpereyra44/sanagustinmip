@@ -55,6 +55,69 @@
     <style>
         body { font-family: "Public Sans", sans-serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        /* Animaciones */
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            animation: pulse-ring 2s ease-out infinite;
+            z-index: -1;
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 <body class="bg-background-light text-slate-900">
@@ -115,15 +178,15 @@
         <!-- Nuestros Servicios - Tipos de Plagas -->
         <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 reveal">
                     <p class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Soluciones Específicas</p>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Nuestros Servicios</h2>
                     <p class="text-slate-600 max-w-2xl mx-auto">Control profesional para cada tipo de plaga con productos certificados y técnicas especializadas.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:cols-4 gap-6 mb-12">
                     <!-- Cucarachas -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -139,7 +202,7 @@
                     </div>
 
                     <!-- Roedores -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden" style="transition-delay: 0.1s;">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -155,7 +218,7 @@
                     </div>
 
                     <!-- Mosquitos -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden" style="transition-delay: 0.2s;">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -171,7 +234,7 @@
                     </div>
 
                     <!-- Moscas -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden" style="transition-delay: 0.3s;">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -187,7 +250,7 @@
                     </div>
 
                     <!-- Hormigas -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden" style="transition-delay: 0.1s;">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -203,7 +266,7 @@
                     </div>
 
                     <!-- Termitas -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden" style="transition-delay: 0.2s;">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -219,7 +282,7 @@
                     </div>
 
                     <!-- Chinches -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden" style="transition-delay: 0.3s;">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -235,7 +298,7 @@
                     </div>
 
                     <!-- Arañas y Alacranes -->
-                    <div class="group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden">
+                    <div class="reveal group relative bg-white rounded-2xl border-2 border-slate-200 hover:border-primary hover:shadow-xl transition-all overflow-hidden" style="transition-delay: 0.4s;">
                         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                         <div class="p-6">
                             <div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -282,7 +345,7 @@
         <section class="py-20 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col gap-12 items-center">
-                    <div class="w-full text-center">
+                    <div class="w-full text-center reveal">
                         <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-4">
                             <span class="material-symbols-outlined text-sm">science</span> Metodología Científica
                         </div>
@@ -292,25 +355,25 @@
                         </p>
                     </div>
                     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="relative p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border-2 border-blue-200">
+                        <div class="reveal relative p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border-2 border-blue-200">
                             <span class="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-black text-lg">1</span>
                             <span class="material-symbols-outlined text-4xl text-blue-600 mb-4">search</span>
                             <h3 class="font-bold text-lg mb-2 text-blue-800">Diagnóstico</h3>
                             <p class="text-sm text-blue-700">Identificación taxonómica de la plaga y evaluación del entorno.</p>
                         </div>
-                        <div class="relative p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border-2 border-green-200">
+                        <div class="reveal relative p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border-2 border-green-200" style="transition-delay: 0.1s;">
                             <span class="absolute -top-4 -left-4 w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-black text-lg">2</span>
                             <span class="material-symbols-outlined text-4xl text-green-600 mb-4">shield</span>
                             <h3 class="font-bold text-lg mb-2 text-green-800">Prevención</h3>
                             <p class="text-sm text-green-700">Saneamiento y exclusión. Eliminar accesos y fuentes de alimento.</p>
                         </div>
-                        <div class="relative p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-200">
+                        <div class="reveal relative p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-200" style="transition-delay: 0.2s;">
                             <span class="absolute -top-4 -left-4 w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-black text-lg">3</span>
                             <span class="material-symbols-outlined text-4xl text-orange-600 mb-4">precision_manufacturing</span>
                             <h3 class="font-bold text-lg mb-2 text-orange-800">Control</h3>
                             <p class="text-sm text-orange-700">Química de precisión con productos profesionales (ULV, Geles, IGRs).</p>
                         </div>
-                        <div class="relative p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl border-2 border-purple-200">
+                        <div class="reveal relative p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl border-2 border-purple-200" style="transition-delay: 0.3s;">
                             <span class="absolute -top-4 -left-4 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-black text-lg">4</span>
                             <span class="material-symbols-outlined text-4xl text-purple-600 mb-4">monitoring</span>
                             <h3 class="font-bold text-lg mb-2 text-purple-800">Seguimiento</h3>
@@ -324,28 +387,28 @@
         <!-- Beneficios Profesionales Section -->
         <section class="py-20 bg-slate-900 text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">La Diferencia Profesional</h2>
                     <p class="text-slate-400 max-w-2xl mx-auto">Ventajas de contratar un servicio profesional de control de plagas</p>
                     <div class="h-1 w-20 bg-primary mx-auto mt-4"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                    <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+                    <div class="reveal flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10">
                         <span class="material-symbols-outlined text-4xl text-green-400 mb-4">target</span>
                         <h3 class="text-lg font-bold mb-3">Eficiencia</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">Solución de raíz que ataca el nido, no solo los síntomas visibles.</p>
                     </div>
-                    <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+                    <div class="reveal flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10" style="transition-delay: 0.1s;">
                         <span class="material-symbols-outlined text-4xl text-green-400 mb-4">health_and_safety</span>
                         <h3 class="text-lg font-bold mb-3">Seguridad</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">Manejo responsable de tóxicos y protección de personas y mascotas.</p>
                     </div>
-                    <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+                    <div class="reveal flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10" style="transition-delay: 0.2s;">
                         <span class="material-symbols-outlined text-4xl text-green-400 mb-4">science</span>
                         <h3 class="text-lg font-bold mb-3">Tecnología</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">Acceso a productos profesionales (ULV, Geles, IGRs) no disponibles sin matrícula.</p>
                     </div>
-                    <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10">
+                    <div class="reveal flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10" style="transition-delay: 0.3s;">
                         <span class="material-symbols-outlined text-4xl text-green-400 mb-4">savings</span>
                         <h3 class="text-lg font-bold mb-3">Ahorro</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">Prevención de daños estructurales y pérdidas de mercancía a largo plazo.</p>
@@ -384,14 +447,14 @@
         <!-- Sectores Atendidos -->
         <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 reveal">
                     <p class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Ofrecemos Nuestros Servicios a</p>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Sectores que Atendemos</h2>
                     <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Experiencia en diversos rubros con protocolos adaptados a cada necesidad.</p>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     <!-- Domicilios -->
-                    <div class="group p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border-2 border-blue-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border-2 border-blue-200 hover:shadow-xl transition-all text-center">
                         <div class="w-14 h-14 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">home</span>
                         </div>
@@ -399,7 +462,7 @@
                         <p class="text-blue-600 text-xs">Hogares y residencias</p>
                     </div>
                     <!-- Industria -->
-                    <div class="group p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-200 hover:shadow-xl transition-all text-center" style="transition-delay: 0.05s;">
                         <div class="w-14 h-14 bg-orange-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">factory</span>
                         </div>
@@ -407,7 +470,7 @@
                         <p class="text-orange-600 text-xs">Plantas y manufactura</p>
                     </div>
                     <!-- Silos -->
-                    <div class="group p-6 bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl border-2 border-amber-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl border-2 border-amber-200 hover:shadow-xl transition-all text-center" style="transition-delay: 0.1s;">
                         <div class="w-14 h-14 bg-amber-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">agriculture</span>
                         </div>
@@ -415,7 +478,7 @@
                         <p class="text-amber-600 text-xs">Granos y cereales</p>
                     </div>
                     <!-- Hospitales -->
-                    <div class="group p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border-2 border-green-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border-2 border-green-200 hover:shadow-xl transition-all text-center" style="transition-delay: 0.15s;">
                         <div class="w-14 h-14 bg-green-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">local_hospital</span>
                         </div>
@@ -423,7 +486,7 @@
                         <p class="text-green-600 text-xs">Centros de salud</p>
                     </div>
                     <!-- Restaurantes -->
-                    <div class="group p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl border-2 border-red-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl border-2 border-red-200 hover:shadow-xl transition-all text-center" style="transition-delay: 0.1s;">
                         <div class="w-14 h-14 bg-red-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">restaurant</span>
                         </div>
@@ -431,7 +494,7 @@
                         <p class="text-red-600 text-xs">Restaurantes y bares</p>
                     </div>
                     <!-- Comercios -->
-                    <div class="group p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl border-2 border-purple-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl border-2 border-purple-200 hover:shadow-xl transition-all text-center" style="transition-delay: 0.15s;">
                         <div class="w-14 h-14 bg-purple-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">storefront</span>
                         </div>
@@ -439,7 +502,7 @@
                         <p class="text-purple-600 text-xs">Locales y negocios</p>
                     </div>
                     <!-- Escuelas -->
-                    <div class="group p-6 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl border-2 border-cyan-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl border-2 border-cyan-200 hover:shadow-xl transition-all text-center" style="transition-delay: 0.2s;">
                         <div class="w-14 h-14 bg-cyan-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">school</span>
                         </div>
@@ -447,7 +510,7 @@
                         <p class="text-cyan-600 text-xs">Instituciones educativas</p>
                     </div>
                     <!-- Hoteles -->
-                    <div class="group p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl border-2 border-indigo-200 hover:shadow-xl transition-all text-center">
+                    <div class="reveal group p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl border-2 border-indigo-200 hover:shadow-xl transition-all text-center" style="transition-delay: 0.25s;">
                         <div class="w-14 h-14 bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-2xl">hotel</span>
                         </div>
@@ -461,7 +524,7 @@
         <!-- Nuestros Trabajos Section -->
         <section class="py-20 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 reveal">
                     <p class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Evidencia de Calidad</p>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Nuestros Trabajos</h2>
                     <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Imágenes y videos reales de nuestros servicios profesionales de control de plagas.</p>
@@ -820,6 +883,33 @@
                 toggleIcon.textContent = 'expand_more';
             }
         }
+
+        // Scroll reveal animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/5492364419280?text=Hola%2C%20me%20gustaría%20consultar%20por%20sus%20servicios%20de%20control%20de%20plagas" 
+       target="_blank" 
+       class="whatsapp-float" 
+       aria-label="Contactar por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
 </body>
 </html>
